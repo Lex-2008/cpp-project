@@ -3,14 +3,14 @@
 
 include_guard(GLOBAL)
 
-include(set_@cpp_pt_cmake@_target_properties)
+include(set_p1_target_properties)
 
 include(GenerateExportHeader)
 include(GNUInstallDirs)
 
 # generaete header with export macro
-function(_@cpp_pt_cmake@_module_generate_export_headers target)
-  set(export_file_dir "${CMAKE_CURRENT_BINARY_DIR}/include/@cpp_pt_name@")
+function(_p1_module_generate_export_headers target)
+  set(export_file_dir "${CMAKE_CURRENT_BINARY_DIR}/include/p1")
   generate_export_header(${module_target}
     EXPORT_FILE_NAME "${export_file_dir}/${module_name}/export.hpp"
   )
@@ -20,15 +20,15 @@ function(_@cpp_pt_cmake@_module_generate_export_headers target)
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
   )
 
-  if (TARGET @cpp_pt_name@)
+  if (TARGET p1)
     install(DIRECTORY ${export_file_dir} TYPE INCLUDE)
   endif()
 endfunction()
 
 # sets all nessary default things
-function(add_@cpp_pt_cmake@_module module_name)
-  set(module_target @cpp_pt_cmake@-${module_name})
-  set(module_alias @cpp_pt_name@::${module_name})
+function(add_p1_module module_name)
+  set(module_target p1-${module_name})
+  set(module_alias p1::${module_name})
 
   add_library(${module_target} ${ARGN})
   add_library(${module_alias} ALIAS ${module_target})
@@ -38,10 +38,10 @@ function(add_@cpp_pt_cmake@_module module_name)
     set(module_type "INTERFACE")
   else()
     set(module_type "PUBLIC")
-    _@cpp_pt_cmake@_module_generate_export_headers(${module_target})
+    _p1_module_generate_export_headers(${module_target})
   endif()
 
-  set_@cpp_pt_cmake@_target_properties(${module_target} ${module_type})
+  set_p1_target_properties(${module_target} ${module_type})
 
   target_include_directories(
     ${module_target} ${module_type}
@@ -53,13 +53,13 @@ function(add_@cpp_pt_cmake@_module module_name)
 
   target_link_libraries(${module_target} ${module_type})
 
-  if (TARGET @cpp_pt_name@)
-    target_link_libraries(@cpp_pt_name@ INTERFACE ${module_target})
-    install(TARGETS ${module_target} EXPORT @cpp_pt_name@-targets)
-    install(DIRECTORY include/@cpp_pt_name@ TYPE INCLUDE)
+  if (TARGET p1)
+    target_link_libraries(p1 INTERFACE ${module_target})
+    install(TARGETS ${module_target} EXPORT p1-targets)
+    install(DIRECTORY include/p1 TYPE INCLUDE)
   endif()
 
-  set(@cpp_pt_cmake@_module_target
+  set(p1_module_target
       ${module_target}
       PARENT_SCOPE
   )

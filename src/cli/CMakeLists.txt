@@ -1,11 +1,11 @@
 # SPDX-FileCopyrightText: Copyright 2023 Mikhail Svetkin
 # SPDX-License-Identifier: MIT
 
-add_@cpp_pt_cmake@_executable(cli)
+add_p1_executable(cli)
 
-target_sources(${@cpp_pt_cmake@_executable_target} PRIVATE src/main.cpp)
+target_sources(${p1_executable_target} PRIVATE src/main.cpp)
 
-target_link_libraries(${@cpp_pt_cmake@_executable_target}
+target_link_libraries(${p1_executable_target}
   PRIVATE
-    @cpp_pt_name@::@cpp_pt_module@
+    p1::m1
 )

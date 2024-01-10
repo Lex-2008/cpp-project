@@ -8,7 +8,7 @@ find_package(Microsoft.GSL CONFIG REQUIRED)
 find_package(range-v3 CONFIG REQUIRED)
 
 # sets default target properties
-function(set_@cpp_pt_cmake@_target_properties target type)
+function(set_p1_target_properties target type)
   target_compile_features(${target} ${type} cxx_std_20)
   set_target_properties(${target}
     PROPERTIES

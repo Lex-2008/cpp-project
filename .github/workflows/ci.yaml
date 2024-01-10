@@ -21,11 +21,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Init template
-      shell: bash
-      run: |
-        cmake -P init.cmake --project gat --module core --header version
-
     - uses: ./.github/actions/install-dependencies
       with:
         preset: ${{matrix.target.preset}}

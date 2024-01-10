@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
-  "name": "@cpp_pt_name@",
+  "name": "p1",
   "version-string": "0.0.1",
   "dependencies": [
     "fmt",

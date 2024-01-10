@@ -21,7 +21,7 @@ endif()
 include(${CMAKE_CURRENT_LIST_DIR}/vcpkg_bootstrap.cmake)
 
 vcpkg_bootstrap(
-  CACHE_DIR_NAME @cpp_pt_name@
+  CACHE_DIR_NAME p1
   REPO https://github.com/microsoft/vcpkg.git
   REF 9edb1b8e590cc086563301d735cae4b6e732d2d2 # release 2023.08.09
 )

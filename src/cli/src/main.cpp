@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Copyright 2023 Mikhail Svetkin
 // SPDX-License-Identifier: MIT
 
-#include "@cpp_pt_name@/@cpp_pt_module@/@cpp_pt_module_header@.hpp"
+#include "p1/m1/h1.hpp"
 
 #include <fmt/core.h>
 
 int main(int /*argc*/, char * /*argv*/ []) {
-  fmt::print("@cpp_pt_name@ version: {}\n", @cpp_pt_name@::@cpp_pt_module@::version());
+  fmt::print("p1 version: {}\n", p1::m1::version());
   return 0;
 }
